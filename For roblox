@@ -1,0 +1,25 @@
+repeat
+	wait(1)
+until script.Parent.Owner.Value ~= nil
+
+local owner = game.Players:GetPlayerFromCharacter(script.Parent.Owner.Value)
+owner.Chatted:Connect(function(msg)
+	if msg == '/lock' then
+			script.Parent.CarLocked.Value = true
+			script.Parent.Anchored = true
+		script.Parent.LockCar:Play()
+			script.Parent.Parent.OwnerPart.BillboardGui.TextBox.Text = script.Parent.Parent.OwnerPart.BillboardGui.TextBox.Text..' [LOCKED]'
+		script.Parent.LockCar:Play()
+
+	end
+	
+	if msg == '/unlock' then
+		script.Parent.CarLocked.Value = false
+		script.Parent.Anchored = false
+		script.Parent.UnlockCar:Play()
+	script.Parent.Parent.OwnerPart.BillboardGui.TextBox.Text = script.Parent.Owner.Value.Name..',S Car.'
+		script.Parent.UnlockCar:Play()
+	end
+end)
+
+--Make sure to put this in driver seat.--
